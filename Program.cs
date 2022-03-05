@@ -4,15 +4,15 @@ namespace freeCodeCamp
 {
     class Program
     {
-        static string secretWord = "frame";
+        static string secretWord = "FRAME";
 
         static void Main(string[] args)
         {
             string guess = "";
             int maxAttempt = 6;
-            bool gameOver = false;
+            bool gameWon = false;
 
-            for (int i=1; i <maxAttempt; i++)
+            for (int i = 1; i < maxAttempt; i++)
             {
                 Console.WriteLine("This is attempt " + i + " out of " + maxAttempt);
                 Console.Write("Enter A " + secretWord.Length + "-Letter Guess: ");
@@ -23,11 +23,10 @@ namespace freeCodeCamp
                 }
                 else
                 {
-                    string result = CheckAnswer(guess);
+                    string result = CheckAnswer(guess.ToUpper());
                     if (result == "WIN")
                     {
-                        Console.WriteLine("Congratulations! You Won!");
-                        gameOver = true;
+                        gameWon = true;
                         break;
                     }
                     else
@@ -38,10 +37,7 @@ namespace freeCodeCamp
                 guess = "";
             }
 
-            if (!gameOver)
-            {
-                Console.WriteLine("Bad Luck! You Failed!");
-            }
+            Console.WriteLine(gameWon ? "Congratulations! You Won!" : "Bad Luck! You Failed!");
 
             Console.ReadLine();
         }
@@ -50,9 +46,9 @@ namespace freeCodeCamp
         {
             char[] result;
             result = new char[secretWord.Length];
-            for (int i=0; i < secretWord.Length; i++)
+            for (int i = 0; i < secretWord.Length; i++)
             {
-                result[i] = 'X';
+                result[i] = '%';
             }
 
             int guessIndex = 0;
