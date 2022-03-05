@@ -1,6 +1,6 @@
 using System;
 
-namespace freeCodeCamp
+namespace wordleGame
 {
     class Program
     {
